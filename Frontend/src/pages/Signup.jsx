@@ -20,7 +20,7 @@ const Signup = () => {
     console.log(data);
     try {
       const response = await axios.post(
-        "http://localhost:3582/api/v1/users/signup",
+        "https://efood-qzna.onrender.com/api/v1/users/signup",
         data
       );
       console.log(response.data);

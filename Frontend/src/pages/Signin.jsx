@@ -6,9 +6,9 @@ import { useForm } from "react-hook-form";
 import axios from "axios";
 let user;
 export const Signin = () => {
-  const navigateTo = useNavigate()
+  const navigateTo = useNavigate();
   const [newUser, setNewUser] = useState({});
-  
+
   const {
     handleSubmit,
     register,
@@ -20,20 +20,17 @@ export const Signin = () => {
     setNewUser(data);
     reset();
     try {
-      const response = await axios.post(
-        "http://localhost:3582/api/v1/users/signin",
-        data
-      );
+      const response = await axios.post("https://efood-qzna.onrender.com/api/v1/users/signin", data);
       console.log(response.data);
       user = response.data.user;
     } catch (error) {
       console.error(error);
     }
-    navigateTo("/")
+    navigateTo("/");
   };
 
   console.log(newUser);
- 
+
   return (
     <Layout>
       <section>
@@ -98,27 +95,27 @@ export const Signin = () => {
                   </div>
                 </div>
                 <div>
-                    <button
-                      type="submit"
-                      className="inline-flex w-full items-center justify-center rounded-md bg-black px-3.5 py-2.5 font-semibold leading-7 text-white hover:bg-black/80"
+                  <button
+                    type="submit"
+                    className="inline-flex w-full items-center justify-center rounded-md bg-black px-3.5 py-2.5 font-semibold leading-7 text-white hover:bg-black/80"
+                  >
+                    Get started{"  "}
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      width={16}
+                      height={16}
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      strokeWidth={2}
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      className="ml-2"
                     >
-                      Get started{"  "}
-                      <svg
-                        xmlns="http://www.w3.org/2000/svg"
-                        width={16}
-                        height={16}
-                        viewBox="0 0 24 24"
-                        fill="none"
-                        stroke="currentColor"
-                        strokeWidth={2}
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                        className="ml-2"
-                      >
-                        <line x1={5} y1={12} x2={19} y2={12} />
-                        <polyline points="12 5 19 12 12 19" />
-                      </svg>
-                    </button>
+                      <line x1={5} y1={12} x2={19} y2={12} />
+                      <polyline points="12 5 19 12 12 19" />
+                    </svg>
+                  </button>
                 </div>
               </div>
             </form>
@@ -128,4 +125,4 @@ export const Signin = () => {
     </Layout>
   );
 };
-export {user}
+export { user };
